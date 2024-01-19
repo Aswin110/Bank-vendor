@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 
 const vendorSchema = new Schema({
 	vendor_name: {type:String, required:true},
-	bank_account: {type:Number, required:true},
-	Bank_name: {type:String, required:true, minLength:9, maxLength:18},
+	bank_account: {type:Number, required:true, minLength:9, maxLength:18},
+	Bank_name: {type:String, required:true},
 	address_line_1 : {type:String, required:true},
 	address_line_2 : {type:String, required:true},
 	city: {type:String, required:true},
