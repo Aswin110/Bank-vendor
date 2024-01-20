@@ -18,7 +18,6 @@ function Vendors() {
                 const res = await axios.get(`${apiUrl}vendors`)
                 setVendors(res.data)
                 setLoading(false)
-                console.log(res.data) 
             }catch(err){
                 console.error(err);
             }
@@ -63,13 +62,13 @@ function Vendors() {
                                 </div>
                             </div>
                         ))))}
-                         <div className="flex justify-center mt-4">
-                            {paginationNumbers.map((pageNumber) => (
-                                <button key={pageNumber}
-                                className="mx-2 px-4 py-2 rounded hover:bg-blue-500 border" 
-                                onClick={()=>paginate(pageNumber)}>{pageNumber}</button>
-                            ))}
-                        </div>
+                <div className="flex justify-center mt-4">
+                    {paginationNumbers.map((pageNumber) => (
+                        <button key={pageNumber}
+                        className={`mx-2 px-4 py-2 rounded hover:bg-blue-500 border ${currentPage === pageNumber ? 'bg-blue-500 text-white' : ''}`}
+                        onClick={()=>paginate(pageNumber)}>{pageNumber}</button>
+                    ))}
+                </div>
             </div>
             <Footer/>
         </>
