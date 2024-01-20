@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const Vendor = require('../models/vendor');
 const asyncHandler = require('express-async-handler');
 
@@ -29,25 +30,46 @@ exports.vendor_create_get = asyncHandler(async (req, res, next) => {
 
 // Handle vendor create on POST.
 exports.vendor_create_post = asyncHandler(async (req, res, next) => {
-	res.send('NOT IMPLEMENTED: vendor create POST');
+	const newVendor = new Vendor(req.body);
+	await newVendor.save();
+	res.send('Saved to database'+ newVendor);
 });
 
 // Display vendor delete form on GET.
 exports.vendor_delete_get = asyncHandler(async (req, res, next) => {
-	res.send('NOT IMPLEMENTED: vendor delete GET');
+	const vendor = await Vendor.findById(req.params.id).exec();
+	
+	if (vendor === null) {
+		// No results.
+		const err = new Error('vendor not found');
+		err.status = 404;
+		return next(err);
+	}
+	res.json(vendor);
 });
 
 // Handle vendor delete on POST.
 exports.vendor_delete_post = asyncHandler(async (req, res, next) => {
-	res.send('NOT IMPLEMENTED: vendor delete POST');
+	await Vendor.findByIdAndDelete(req.params.id);
+	res.send('deleted from database');
 });
 
 // Display vendor update form on GET.
 exports.vendor_update_get = asyncHandler(async (req, res, next) => {
-	res.send('NOT IMPLEMENTED: vendor update GET');
+	const vendor = await Vendor.findById(req.params.id).exec();
+	
+	if (vendor === null) {
+		// No results.
+		const err = new Error('vendor not found');
+		err.status = 404;
+		return next(err);
+	}
+	res.json(vendor);
 });
 
 // Handle vendor update on POST.
 exports.vendor_update_post = asyncHandler(async (req, res, next) => {
-	res.send('NOT IMPLEMENTED: vendor update POST');
+	const vendor = new Vendor({...req.body, _id:req.params.id});
+	await Vendor.findByIdAndUpdate(req.params.id, vendor, {});
+	res.send('saved to database'+ vendor);
 });
