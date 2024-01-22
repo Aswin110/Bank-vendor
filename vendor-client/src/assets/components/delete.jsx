@@ -3,8 +3,8 @@ import Footer from './footer';
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css';
+// import { ToastContainer, toast } from 'react-toastify'
+// import 'react-toastify/dist/ReactToastify.css';
 import LoadingSpinner from "./loading";
 
 function Delete({user}) {
@@ -37,22 +37,22 @@ function Delete({user}) {
         vendorFunc()
     },[])
 
-    const notify = () => toast.success('vendor deleted successfully', {
-        position: "top-center",
-        autoClose: 1000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-        });
+    // const notify = () => toast.success('vendor deleted successfully', {
+    //     position: "top-center",
+    //     autoClose: 1000,
+    //     hideProgressBar: false,
+    //     closeOnClick: true,
+    //     pauseOnHover: true,
+    //     draggable: true,
+    //     progress: undefined,
+    //     theme: "colored",
+    //     });
 
     const deleteVendor = async () => {
             try{
                 const response = await axios.post(`${apiUrl}vendor/${id}/delete`);
                 console.log(response.data);
-                notify();
+                // notify();
                 navigate('/vendors')
             } 
             catch (error) {
@@ -85,7 +85,7 @@ function Delete({user}) {
                         </>
                     )}
                 </div>
-                <ToastContainer/>
+                {/* <ToastContainer/> */}
                 <Footer/>
         </>
     ) 
