@@ -41,7 +41,7 @@ const limiter = RateLimiter({
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-
+app.use(passport.session());
 app.use(session({
 	secret: process.env.SESSION_KEY,
 	resave:false,

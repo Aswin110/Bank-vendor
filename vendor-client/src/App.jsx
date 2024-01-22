@@ -20,11 +20,11 @@ function App() {
       const url = `${apiUrl}auth/login/success`;
       const {data} = await axios.get(url, {
         withCredentials:true,
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'Cache': 'no-cache'
-        },
+        // headers: {
+        //   'Accept': 'application/json',
+        //   'Content-Type': 'application/json',
+        //   'Cache': 'no-cache'
+        // },
       })
       console.log(data.user)
       setUser(data.user)
