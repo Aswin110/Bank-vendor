@@ -4,8 +4,11 @@ import Footer from './footer';
 import axios from "axios";
 import { Link } from "react-router-dom";
 import LoadingSpinner from "./loading";
+import PropTypes from 'prop-types';
 
-function Vendors() {
+
+function Vendors({user}) {
+    console.log('user', user)
     const apiUrl = import.meta.env.VITE_URL;
     const [vendors, setVendors ] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -42,6 +45,7 @@ function Vendors() {
         <>
             <Layout 
                 title='Vendors'
+                user={user}
             />
             <div className="h-screen min-w-screen ">
                 {loading ?
@@ -73,6 +77,10 @@ function Vendors() {
             <Footer/>
         </>
     ) 
+}
+
+Vendors.propTypes = {
+    user: PropTypes.object,
 }
 
 export default Vendors;

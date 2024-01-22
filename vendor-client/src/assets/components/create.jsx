@@ -6,7 +6,7 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 
-function Create() {
+function Create({user}) {
     const apiUrl = import.meta.env.VITE_URL;
     const  [vendorData, setVendorData] = useState({
         vendor_name: '',
@@ -101,11 +101,12 @@ function Create() {
         <>
             <Layout 
                 title='Create'
+                user={user}
             />
             <div className='m-auto flex flex-col items-center'>
                 <h1 className='text-5xl px-2 py-8'>New Vendor</h1>
                 <form action="/vendor/create" method='POST' onSubmit={postVendor} className='flex flex-col gap-4'>
-                    <label htmlFor ="vendor_name">Vendor Name:</label>
+                    <label htmlFor ="vendor_name">Vendor Name</label>
                     <input 
                         type="text" 
                         id='vendor_name' 
@@ -116,7 +117,7 @@ function Create() {
                         required={true} 
                         className='p-2 rounded border-solid border-2 border-indigo-600'
                     />
-                    <label htmlFor ="bank_account">Bank Account Number:</label>
+                    <label htmlFor ="bank_account">Bank Account Number</label>
                     <input 
                         type="tel" 
                         id='bank_account' 
@@ -127,7 +128,7 @@ function Create() {
                         required={true}  
                         className='p-2 rounded border-solid border-2 border-indigo-600 outline-none appearance-none'
                     />
-                    <label htmlFor ="Bank_name">Bank Name:</label>
+                    <label htmlFor ="Bank_name">Bank Name</label>
                     <input 
                         type="text" 
                         id='Bank_name' 
@@ -138,7 +139,7 @@ function Create() {
                         required={true}  
                         className='p-2 rounded border-solid border-2 border-indigo-600'
                     />
-                    <label htmlFor ="address_line_1">Address Line 1:</label>
+                    <label htmlFor ="address_line_1">Address Line 1</label>
                     <input 
                         type="text" 
                         id='address_line_1' 
@@ -149,7 +150,7 @@ function Create() {
                         required={true} 
                         className='p-2 rounded border-solid border-2 border-indigo-600'
                     />
-                    <label htmlFor ="address_line_2">Address Line 2:</label>
+                    <label htmlFor ="address_line_2">Address Line 2</label>
                     <input 
                         type="text" 
                         id='address_line_2' 
@@ -160,7 +161,7 @@ function Create() {
                         required={true}  
                         className='p-2 rounded border-solid border-2 border-indigo-600'
                     />
-                    <label htmlFor ="city">City:</label>
+                    <label htmlFor ="city">City</label>
                     <input 
                         type="text" 
                         id='city' 
@@ -171,7 +172,7 @@ function Create() {
                         required={true}  
                         className='p-2 rounded border-solid border-2 border-indigo-600'
                     />
-                    <label htmlFor ="country">Country:</label>
+                    <label htmlFor ="country">Country</label>
                     <input 
                         type="text" 
                         id='country' 
@@ -182,7 +183,7 @@ function Create() {
                         required={true} 
                         className='p-2 rounded border-solid border-2 border-indigo-600'
                     />
-                    <label htmlFor ="zip_code">Zip Code:</label>
+                    <label htmlFor ="zip_code">Zip Code</label>
                     <input 
                         type="tel" 
                         id='zip_code' 

@@ -45,10 +45,10 @@ function App() {
             path="/signup"
             element={user ? <Navigate to="/" /> : <SignUp />}
           />
-          <Route path="/vendor/:id/update" element={<Update />} />
-          <Route path="/vendors" element={<Vendors />} />
-          <Route path="/vendor/create" element={<Create />} />
-          <Route path="/vendor/:id/delete" element={<Delete />} />
+          <Route path="/vendor/:id/update" element={<Update user={user} />} />
+          <Route path="/vendors" element={<Vendors user={user} />} />
+          <Route path="/vendor/create" element={<Create user={user} />} />
+          <Route path="/vendor/:id/delete" element={<Delete user={user} />} />
         </Routes>
       </div>
       </BrowserRouter>

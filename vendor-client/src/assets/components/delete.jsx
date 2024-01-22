@@ -7,7 +7,7 @@ import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import LoadingSpinner from "./loading";
 
-function Delete() {
+function Delete({user}) {
     const apiUrl = import.meta.env.VITE_URL;
     const  [vendorData, setVendorData] = useState({
         vendor_name: '',
@@ -65,6 +65,7 @@ function Delete() {
         <>
             <Layout 
                 title='Delete'
+                user={user}
             />
             <div className='m-auto flex flex-col items-center w-screen h-screen'>
                 {loading ?

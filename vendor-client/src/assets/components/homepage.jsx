@@ -19,7 +19,7 @@ function HomePage({user}) {
                     <div>WELCOME TO </div>
                     <div>OUR PAGE</div>
                 </div>
-                <div className="text-white p-9">A Non-Profitable-Organization</div>
+                <div className="text-white p-9"></div>
             </div>
 
             <div className="p-10 flex flex-col items-center justify-center">

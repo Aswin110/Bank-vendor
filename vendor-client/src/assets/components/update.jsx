@@ -7,7 +7,7 @@ import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import LoadingSpinner from "./loading";
 
-function Update() {
+function Update({user}) {
     const apiUrl = import.meta.env.VITE_URL;
     const  [vendorData, setVendorData] = useState({
         vendor_name: '',
@@ -108,6 +108,7 @@ function Update() {
         <>
             <Layout 
                 title='Create'
+                user={user}
             />
             <div className='m-auto flex flex-col items-center'>
                 <h1 className='text-5xl px-2 py-8'>Update Vendor</h1>
