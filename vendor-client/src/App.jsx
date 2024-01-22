@@ -18,7 +18,14 @@ function App() {
   const getUser = async() => {
     try {
       const url = `${apiUrl}auth/login/success`;
-      const {data} = await axios.get(url, {withCredentials:true})
+      const {data} = await axios.get(url, {
+        withCredentials:true,
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Cache': 'no-cache'
+        },
+      })
       console.log(data.user)
       setUser(data.user)
     } catch (error) {
@@ -26,8 +33,10 @@ function App() {
     }
   }
   useEffect(()=>{
-    getUser();
-  },[]);
+    if (!user) {
+      getUser();
+    }
+  },[user]);
 
   return (
     <BrowserRouter>
@@ -48,7 +57,7 @@ function App() {
           <Route path="/vendor/:id/update" element={<Update user={user} />} />
           <Route path="/vendors" element={<Vendors user={user} />} />
           <Route path="/vendor/create" element={<Create user={user} />} />
-          <Route path="/vendor/:id/delete" element={<Delete user={user} />} />
+          <Route path="/vendor/:id/delete" element={<Delete user={user}/>} />
         </Routes>
       </div>
       </BrowserRouter>
