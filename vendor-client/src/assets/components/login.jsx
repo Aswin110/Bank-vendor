@@ -1,8 +1,16 @@
-import Layout from "./layout";
 import {Link} from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGoogle } from '@fortawesome/free-brands-svg-icons';
+
 
 function LogIn() {
-
+    const apiUrl = import.meta.env.VITE_URL;
+    const googleAuth = () => {
+        window.open(
+            `${apiUrl}auth/google/callback`,
+            "_self"
+        )
+    }
 
     return (
         <>
@@ -15,7 +23,14 @@ function LogIn() {
                     <input type="password" id='password' name='password' placeholder='Password' required={true} className='p-2 rounded border-solid border-2 border-indigo-600'/>
                     <button type='submit' className='py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700' >Log In</button>
                 </form>
-                <div className="px-4 py-2">If you don't have an account. <Link className='text-sky-400' to='/signup'>Sign Up</Link></div>
+                <div>or</div>
+                <button className="border-black border-2 py-2.5 px-2 hover:bg-gray-100 focus:ring-2"
+                    onClick={googleAuth}
+                >
+                        <FontAwesomeIcon className="px-2" icon={faGoogle} bounce />
+                        <span  >Sign in with Google</span>
+                </button>
+                <div className="px-4 py-2">New Here ? <Link className='text-sky-400' to='/signup'>Sign Up</Link></div>
             </div>
         </>
     ) 

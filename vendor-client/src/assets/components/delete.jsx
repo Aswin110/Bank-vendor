@@ -1,7 +1,7 @@
 import Layout from "./layout";
 import Footer from './footer';
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
@@ -21,6 +21,7 @@ function Delete() {
     })
     const [loading, setLoading] = useState(true);
     const {id} = useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
         async function vendorFunc () {
@@ -48,11 +49,13 @@ function Delete() {
         });
 
     const deleteVendor = async () => {
-            try {
-                    const response = await axios.post(`${apiUrl}vendor/${id}/delete`);
-                    console.log(response.data);
-                    notify();
-            } catch (error) {
+            try{
+                const response = await axios.post(`${apiUrl}vendor/${id}/delete`);
+                console.log(response.data);
+                notify();
+                navigate('/vendors')
+            } 
+            catch (error) {
                 console.error('Error deleting vendor', error);
             }
         };

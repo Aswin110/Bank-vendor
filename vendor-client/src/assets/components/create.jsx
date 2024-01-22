@@ -1,6 +1,7 @@
 import Layout from "./layout";
 import Footer from './footer';
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
@@ -29,7 +30,8 @@ function Create() {
         theme: "colored",
         });
 
-    const [vendorErrors, setVendorErrors] = useState({})
+    const [vendorErrors, setVendorErrors] = useState({});
+    const navigate = useNavigate();
 
     function formValidation() {
         const errors = {};
@@ -87,6 +89,7 @@ function Create() {
                   country: '',
                   zip_code: ''
                 });
+                navigate('/vendors')
               } catch (error) {
                 console.error('Error posting vendor', error);
               }

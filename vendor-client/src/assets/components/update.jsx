@@ -1,7 +1,7 @@
 import Layout from "./layout";
 import Footer from './footer';
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
@@ -21,6 +21,7 @@ function Update() {
     })
     const [loading, setLoading] = useState(true);
     const {id} = useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
         async function vendorFunc () {
@@ -93,9 +94,11 @@ function Update() {
                 const response = await axios.post(`${apiUrl}vendor/${id}/update`, vendorData);
                 console.log(response.data);
                 notify();
-              } catch (error) {
+                navigate('/vendors')
+            } 
+            catch (error) {
                 console.error('Error updating vendor', error);
-              }
+            }
         } else {
             console.log('vendor failed to post')
         }

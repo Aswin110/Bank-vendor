@@ -2,14 +2,16 @@ import Layout from "./layout";
 import peopleImage from '../../images/people.jpg'
 import Footer from "./footer";
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 
-function HomePage() {
+function HomePage({user}) {
 
 
     return (
         <>
             <Layout 
                 title='Home Page'
+                user={user}
             />
 
             <div className="min-h-screen min-w-screen bg-cover bg-center flex justify-between overflow-hidden" style={{backgroundImage: `url(${peopleImage})`}}>
@@ -31,6 +33,10 @@ function HomePage() {
             <Footer/>
         </>
     ) 
+}
+
+HomePage.propTypes = {
+    user: PropTypes.object,
 }
 
 export default HomePage;
