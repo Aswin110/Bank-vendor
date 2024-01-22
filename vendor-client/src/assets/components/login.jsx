@@ -2,7 +2,6 @@ import {Link} from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 
-
 function LogIn() {
     const apiUrl = import.meta.env.VITE_URL;
     const googleAuth = () => {

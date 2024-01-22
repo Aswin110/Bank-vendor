@@ -1,8 +1,17 @@
-import Layout from "./layout";
 import {Link} from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGoogle } from '@fortawesome/free-brands-svg-icons';
+
 
 function SignUp() {
+    const apiUrl = import.meta.env.VITE_URL;
 
+    const googleAuth = () => {
+        window.open(
+            `${apiUrl}auth/google/callback`,
+            "_self"
+        )
+    }
 
     return (
         <>
@@ -60,6 +69,13 @@ function SignUp() {
                             Submit
                     </button>
                 </form>
+                <div>or</div>
+                <button className="border-black border-2 py-2.5 px-2 hover:bg-gray-100 focus:ring-2"
+                    onClick={googleAuth}
+                >
+                        <FontAwesomeIcon className="px-2" icon={faGoogle} bounce />
+                        <span  >Sign in with Google</span>
+                </button>
                 <div className="px-4 py-2">If you already have an account. <Link className='text-sky-400' to='/login'>Log In</Link></div>
             </div>
         </>

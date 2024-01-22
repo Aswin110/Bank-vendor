@@ -9,6 +9,9 @@ const cors = require('cors');
 const passport = require('passport');
 const session = require('express-session');
 const googleStrategy = require('passport-google-oauth20').Strategy;
+const compression = require("compression");
+const helmet = require("helmet");
+const RateLimiter = require('express-rate-limit');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -27,6 +30,13 @@ async function main() {
 	await mongoose.connect(mongoDB);
 	console.log('connected to mongodb');
 }
+
+app.use(helmet());
+
+const limiter = RateLimiter({
+	windowMs:1*60*1000,
+	max:60,
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -92,6 +102,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(compression());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cors({
@@ -99,6 +110,8 @@ app.use(cors({
 	methods:"GET,POST,UPDATE,DELETE",
 	credentials:true,
 }));
+
+app.use(limiter);
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

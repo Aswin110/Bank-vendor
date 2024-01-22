@@ -62,7 +62,7 @@ function Vendors({user}) {
                                 </div>
                                 <div className="text-right flex flex-col gap-3">
                                     <Link to={`/vendor/${vendor._id}/update`}><button className="bg-blue-500 text-white px-4 py-2 rounded">Update</button></Link>
-                                    <Link to={`/vendor/${vendor._id}/delete`}><button className="bg-red-500 text-white px-4 py-2 rounded">Delete</button></Link>
+                                    <Link to={`/vendor/${vendor._id}/delete`}><button className="text-black border-solid border-2 border-gray px-4 py-2 rounded-lg">Delete</button></Link>
                                 </div>
                             </div>
                         ))))}

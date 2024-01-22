@@ -47,34 +47,44 @@ function Layout({title, user}) {
                 </Helmet>
                 <div className="h-full flex flex-col bg-slate-300">
                     <div className="sticky top-0 px-6 py-3 flex justify-between flex-wrap">
-                        <Link className='py-2' to="/">HOME</Link>
-                        <button onClick={toggleDropdown} onMouseEnter={toggleDropdown} ref={ref}>
-                            {user&&<img className='rounded-full h-10 w-10 grayscale hover:grayscale-0 cursor-pointer' src={user.profilePicture} alt="profile picture" />}
-                        </button>
-                        {isOpen&&(<nav className="absolute top-12 right-0 bg-white border rounded shadow-md">
-                            <ul className="flex flex-col gap-4 py-2">
-                                <>
-                                    <li>
-                                        <div className="px-4 py-2">{user.displayName}</div>
-                                    </li>
-                                    <hr />
-                                    <li>
-                                        <Link className="px-4 py-2" to="/vendor/create">Create Vendor</Link>
-                                    </li>
-                                    <li>
-                                        <Link className="px-4 py-2" to="/vendors">Vendors List</Link>
-                                    </li>
-                                    <li>
-                                        <button
-                                            onClick={logOut}
-                                        >
-                                            <Link className="px-4 py-2" to="/login">Log out</Link>
-                                        </button>
-                                    </li>
-                                </>
-                            </ul>
-                        </nav>)}
-                    </div>
+                        <Link className='py-4' to="/">HOME</Link>
+                       <div className='flex'>
+                       <div className="flex justify-between px-6 py-3">
+                            <Link className="px-4 py-2" to="/vendor/create">
+                                Create Vendor
+                            </Link>
+                            <Link className="px-4 py-2" to="/vendors">
+                                Vendors List
+                            </Link>
+                        </div>
+                           <button onClick={toggleDropdown} onMouseEnter={toggleDropdown} ref={ref}>
+                                {user&&<img className='rounded-full h-10 w-10 grayscale hover:grayscale-0 cursor-pointer' src={user.profilePicture} alt="profile picture" />}
+                            </button>
+                            {isOpen&&(<nav className="absolute top-12 right-0 bg-white border rounded shadow-md">
+                                <ul className="flex flex-col gap-4 py-2">
+                                    <>
+                                        <li>
+                                            <div className="px-4 py-2">{user.displayName}</div>
+                                        </li>
+                                        <hr />
+                                        <li>
+                                            <Link className="px-4 py-2" to="/vendor/create">Create Vendor</Link>
+                                        </li>
+                                        <li>
+                                            <Link className="px-4 py-2" to="/vendors">Vendors List</Link>
+                                        </li>
+                                        <li>
+                                            <button
+                                                onClick={logOut}
+                                            >
+                                                <Link className="px-4 py-2" to="/login">Log out</Link>
+                                            </button>
+                                        </li>
+                                    </>
+                                </ul>
+                            </nav>)}
+                       </div>
+                    </div> 
                 </div>
             </>
         </HelmetProvider>
