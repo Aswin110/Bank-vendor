@@ -16,7 +16,7 @@ const MongoStore = require('connect-mongo');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-const User =require('./models/user');
+const User = require('./models/user');
 
 var app = express();
 
@@ -49,6 +49,7 @@ app.use(session({
 	saveUninitialized:true,
 	cookie:{
 		maxAge:24*60*60*1000,
+		sameSite:'None'
 	},
 	store: MongoStore.create({
 		mongoUrl: process.env.MONGODB_URI, 
