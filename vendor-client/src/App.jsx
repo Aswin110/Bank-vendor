@@ -17,7 +17,7 @@ function App() {
 
   const getUser = async() => {
     try {
-      const url = `${apiUrl}auth/login/success`;
+      const url = `https://bank-vendor-production.up.railway.app/auth/login/success`;
       const {data} = await axios.get(url, {
         withCredentials:true,
         // headers: {

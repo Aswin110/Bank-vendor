@@ -41,7 +41,7 @@ const limiter = RateLimiter({
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-app.use(passport.session());
+
 app.use(session({
 	secret: process.env.SESSION_KEY,
 	resave:false,
@@ -59,7 +59,7 @@ passport.use(
 		{
 			clientID: process.env.CLIENT_ID,
 			clientSecret: process.env.CLIENT_SECRET,
-			callbackURL: `${process.env.SERVER_URL}/auth/google/callback`,
+			callbackURL: `https://bank-vendor-production.up.railway.app/auth/google/callback`,
 			scope: ['profile','email'],
 		},
 		async function (accessToken, refreshToken, profile, callback) {
@@ -106,7 +106,7 @@ app.use(compression());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cors({
-	origin:`${process.env.CLIENT_URL}`,
+	origin:`https://bank-vendor.vercel.app`,
 	methods:"GET,POST,UPDATE,DELETE",
 	credentials:true,
 }));

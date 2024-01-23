@@ -1,7 +1,13 @@
 const passport = require('passport');
 
 exports.login = (req, res, next) => {
-	passport.authenticate('google', { successRedirect: process.env.CLIENT_URL, failureRedirect: '/login/failed', failureFlash: true })(req, res, next);
+	try{
+		console.log('Entering login route');
+		passport.authenticate('google', { successRedirect: 'https://bank-vendor.vercel.app', failureRedirect: '/login/failed', failureFlash: true })(req, res, next);
+	} catch(error) {
+		console.error('Error in Google OAuth callback:', error);
+		res.status(500).json({ error: 'Internal Server Error' });
+	}
 };
 
 exports.login_failed = (req, res, next) => {
