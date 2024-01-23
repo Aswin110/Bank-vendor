@@ -12,6 +12,7 @@ const googleStrategy = require('passport-google-oauth20').Strategy;
 const compression = require("compression");
 const helmet = require("helmet");
 const RateLimiter = require('express-rate-limit');
+const MongoStore = require('connect-mongo')(session);
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -48,9 +49,11 @@ app.use(session({
 	saveUninitialized:true,
 	cookie:{
 		maxAge:24*60*60*1000,
-	}
+	},
+	store: new MongoStore({ mongooseConnection: mongoose.connection }),
 }));
 
+app.set('trust proxy', 1);
 app.use(passport.initialize());
 app.use(passport.session());
 
