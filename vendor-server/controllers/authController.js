@@ -18,7 +18,8 @@ exports.login_failed = (req, res, next) => {
 };
 
 exports.login_success = (req, res, next) => {
-	if (req.isAuthenticated()) {
+	console.log(req.user);
+	if (req.user) {
 		res.status(200).json({
 			error: false,
 			message: 'successfully logged in',
