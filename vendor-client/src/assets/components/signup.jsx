@@ -1,6 +1,7 @@
 import {Link} from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 
 function SignUp() {
@@ -14,7 +15,10 @@ function SignUp() {
     }
 
     return (
-        <>
+        <HelmetProvider>
+            <Helmet>
+                <title>Sign up</title>
+            </Helmet>
             <div className='m-auto flex flex-col items-center'>
                 <h1 className='text-5xl px-2 py-8'>Sign Up</h1>
                 <form action="/signup" method='POST' className='flex flex-col gap-4'>
@@ -78,7 +82,7 @@ function SignUp() {
                 </button>
                 <div className="px-4 py-2">If you already have an account. <Link className='text-sky-400' to='/login'>Log In</Link></div>
             </div>
-        </>
+        </HelmetProvider>
     ) 
 }
 

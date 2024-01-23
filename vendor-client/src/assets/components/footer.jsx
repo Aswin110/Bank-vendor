@@ -3,8 +3,6 @@ import { faEnvelope,  } from '@fortawesome/free-solid-svg-icons';
 import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 
 function Footer() {
-
-
     return (
         <>
             <footer className="bg-back">
@@ -29,7 +27,7 @@ function Footer() {
                             </a>
                         </div>
                         <div className=" pb-5 text-justify">
-                            Build with React, Node, Express, MongoDb and Tailwind and hosted on
+                            Build with React, Node, Express, MongoDb and Tailwind.
                         </div>
                     </div>  
 

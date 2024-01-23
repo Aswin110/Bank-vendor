@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify'
+import PropTypes from 'prop-types';
 import 'react-toastify/dist/ReactToastify.css';
 
 function Create({user}) {
@@ -208,5 +209,10 @@ function Create({user}) {
         </>
     ) 
 }
+
+Create.propTypes = {
+    user: PropTypes.object,
+}
+
 
 export default Create;

@@ -6,6 +6,7 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import LoadingSpinner from "./loading";
+import PropTypes from 'prop-types';
 
 function Update({user}) {
     const apiUrl = import.meta.env.VITE_URL;
@@ -221,6 +222,10 @@ function Update({user}) {
                 <Footer/>
         </>
     ) 
+}
+
+Update.propTypes = {
+    user: PropTypes.object,
 }
 
 export default Update;

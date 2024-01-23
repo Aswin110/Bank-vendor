@@ -1,7 +1,7 @@
+/* eslint-disable no-undef */
 var express = require('express');
 const app = express();
 var router = express.Router();
-// import passport from 'passport';
 const vendor_controller = require('../controllers/vendorController');
 const {login, logout, login_failed, login_success, authenticate_Method} = require('../controllers/authController');
 

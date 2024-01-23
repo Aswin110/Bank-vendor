@@ -1,6 +1,7 @@
 import {Link} from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 function LogIn() {
     const apiUrl = import.meta.env.VITE_URL;
@@ -12,7 +13,10 @@ function LogIn() {
     }
 
     return (
-        <>
+        <HelmetProvider>
+            <Helmet>
+                <title>Log in</title>
+            </Helmet>
             <div className='m-auto flex flex-col items-center'>
                 <h1 className='text-5xl px-2 py-8'>Log in</h1>
                 <form action="/login" method='POST' className='flex flex-col gap-4'>
@@ -31,7 +35,7 @@ function LogIn() {
                 </button>
                 <div className="px-4 py-2">New Here ? <Link className='text-sky-400' to='/signup'>Sign Up</Link></div>
             </div>
-        </>
+        </HelmetProvider>
     ) 
 }
 

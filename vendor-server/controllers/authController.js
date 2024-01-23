@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 const passport = require('passport');
 
 exports.login = (req, res, next) => {

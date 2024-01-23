@@ -5,8 +5,6 @@ import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 
 function HomePage({user}) {
-
-
     return (
         <>
             <Layout 
@@ -28,8 +26,6 @@ function HomePage({user}) {
                 </div>
                 <p className='mx-auto'>Welcome to Bank Vendor, a very basic website developed to <Link to="/vendor/create" className="underline">create</Link>, update and delete <Link to="/vendors" className="underline">vendors</Link>.</p>
             </div>
-
-
             <Footer/>
         </>
     ) 

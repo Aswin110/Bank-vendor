@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -9,8 +10,8 @@ const cors = require('cors');
 const passport = require('passport');
 const session = require('express-session');
 const googleStrategy = require('passport-google-oauth20').Strategy;
-const compression = require("compression");
-const helmet = require("helmet");
+const compression = require('compression');
+const helmet = require('helmet');
 const RateLimiter = require('express-rate-limit');
 const MongoStore = require('connect-mongo');
 
@@ -105,7 +106,6 @@ passport.deserializeUser(async (id, done) => {
 	}
 });
 
-// app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -114,12 +114,6 @@ app.use(compression());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cors());
-
-// app.use(cors({
-// 	origin:[`${process.env.CLIENT_URL}`, 'https://bank-vendor.vercel.app'],
-// 	methods:"GET,POST,UPDATE,DELETE",
-// 	credentials:true,
-// }));
 
 app.use((req, res, next) => {
 	const allowedOrigins = [process.env.CLIENT_URL , 'https://bank-vendor.vercel.app'];

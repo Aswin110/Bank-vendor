@@ -6,9 +6,7 @@ import { Link } from "react-router-dom";
 import LoadingSpinner from "./loading";
 import PropTypes from 'prop-types';
 
-
 function Vendors({user}) {
-    console.log('user', user)
     const apiUrl = import.meta.env.VITE_URL;
     const [vendors, setVendors ] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -39,7 +37,6 @@ function Vendors({user}) {
     }
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
 
     return (
         <>

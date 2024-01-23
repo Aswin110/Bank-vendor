@@ -2,7 +2,6 @@ import './App.css'
 import { Routes, Route, Navigate, BrowserRouter } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { createBrowserRouter } from 'react-router-dom'
 import SignUp from './assets/components/signup'
 import LogIn from './assets/components/login'
 import HomePage from './assets/components/homepage'
@@ -20,13 +19,7 @@ function App() {
       const url = `${apiUrl}auth/login/success`;
       const {data} = await axios.get(url, {
         withCredentials:true,
-        // headers: {
-        //   'Accept': 'application/json',
-        //   'Content-Type': 'application/json',
-        //   'Cache': 'no-cache'
-        // },
       })
-      console.log(data.user)
       setUser(data.user)
     } catch (error) {
       console.log(error);
