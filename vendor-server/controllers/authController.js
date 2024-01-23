@@ -18,17 +18,16 @@ exports.login_failed = (req, res, next) => {
 };
 
 exports.login_success = (req, res, next) => {
-	console.log(req.user);
-	if (req.user) {
+	if (req.isAuthenticated()) {
 		res.status(200).json({
-			error:false,
-			message:'successfully logged in',
+			error: false,
+			message: 'successfully logged in',
 			user: req.user,
 		});
 	} else {
 		res.status(403).json({
-			error:true,
-			message:'Not authorized',
+			error: true,
+			message: 'Not authorized',
 		});
 	}
 };
