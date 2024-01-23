@@ -59,7 +59,7 @@ passport.use(
 		{
 			clientID: process.env.CLIENT_ID,
 			clientSecret: process.env.CLIENT_SECRET,
-			callbackURL: `https://bank-vendor-production.up.railway.app/auth/google/callback`,
+			callbackURL: `${process.env.SERVER_URL}/auth/google/callback`,
 			scope: ['profile','email'],
 		},
 		async function (accessToken, refreshToken, profile, callback) {
@@ -106,10 +106,22 @@ app.use(compression());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cors({
-	origin:`https://bank-vendor.vercel.app`,
+	origin:[`${process.env.CLIENT_URL}` || 'https://bank-vendor.vercel.app'],
 	methods:"GET,POST,UPDATE,DELETE",
 	credentials:true,
 }));
+
+app.use((req, res, next) => {
+	const allowedOrigins = [process.env.CLIENT_URL || 'https://bank-vendor.vercel.app'];
+	const origin = req.headers.origin;
+	if (allowedOrigins.includes(origin)) {
+		res.setHeader('Access-Control-Allow-Origin', origin);
+	}
+	res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+	res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+	res.header('Access-Control-Allow-Credentials', true);
+	next();
+});
 
 app.use(limiter);
 
