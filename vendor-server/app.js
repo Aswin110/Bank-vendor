@@ -112,7 +112,7 @@ app.use(compression());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cors({
-	origin:[`${process.env.CLIENT_URL}` || 'https://bank-vendor.vercel.app'],
+	origin:[`${process.env.CLIENT_URL}`, 'https://bank-vendor.vercel.app'],
 	methods:"GET,POST,UPDATE,DELETE",
 	credentials:true,
 }));
